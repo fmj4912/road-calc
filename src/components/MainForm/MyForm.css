@@ -1,0 +1,18 @@
+.mybackground {
+    background-image: url("http://www.fredsullivan.com/wp-content/uploads/2014/01/the-long-winding-road-207526.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.formbackground {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.selectionbackground {
+    background-color: rgba(255, 255, 255, 1);
+}
+
+.submitbutton {
+
+}
