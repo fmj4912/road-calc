@@ -108,6 +108,7 @@ class App extends Component {
 		topMaterial = value;
 	}
 
+
 	mainFunction = () => {
 		const andelstalNewAndOld = this.state.baseShares + this.state.firstPropertyShare+ this.state.secondPropertyShare+ this.state.thirdPropertyShare+ this.state.fourthPropertyShare+ this.state.fifthPropertyShare;
 
@@ -133,6 +134,7 @@ class App extends Component {
 		this.setState({fifthConnectCost: parseInt(andelstal5Pay)});
 
 		this.setState({renderResult: true});
+
 
 		return (
 			(1)

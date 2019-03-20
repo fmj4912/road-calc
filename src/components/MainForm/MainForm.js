@@ -8,18 +8,18 @@ const MainForm = ({getWidth, getLength, getAge, getBasicMaterial, getTopMaterial
             <div className="">
                 <article className="tc br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw9 center formbackground">
                     <div className="">
-                        <p className="f3">Anslutningsberäkning</p>
+                        <p className="f3 underline">Anslutningsberäkning</p>
                         <div className="flex items-center justify-center flex-column">
                           <div className='cf dib'>
-                            <p className="m0 f6 silver tc">Vägens grundmaterial</p>
-                            <p onClick={() => getBasicMaterial(100)} className="selectionbackground f6 fl hover-bg-orange hover-white b--black bb bt bl ph3 pv2 dib br2 br--left bl orange" href="#0">Grus (dålig)</p>
-                            <p onClick={() => getBasicMaterial(150)} className="selectionbackground f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib orange" href="#0">Grus (bra)</p>
-                            <p onClick={() => getBasicMaterial(250)} className="selectionbackground f6 fl hover-bg-orange hover-white b--black bb bt ph3 pv2 dib orange br2 br--right br" href="#0">Grus (bättre)</p>
+                            <p className="m0 f6 b tc">Vägens grundmaterial</p>
+                            <p onClick={() => getBasicMaterial(100)} className="selectionbackground change-button-color f6 fl hover-bg-orange hover-white b--black bb bt bl ph3 pv2 dib br2 br--left bl orange" href="#0">Grus (dålig)</p>
+                            <p onClick={() => getBasicMaterial(150)} className="selectionbackground change-button-color f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib orange" href="#0">Grus (bra)</p>
+                            <p onClick={() => getBasicMaterial(250)} className="selectionbackground change-button-color f6 fl hover-bg-orange hover-white b--black bb bt ph3 pv2 dib orange br2 br--right br" href="#0">Grus (bättre)</p>
                           </div>
                         </div>
                         <div className="flex items-center justify-center flex-column">
                           <div className='cf dib'>
-                            <p className="m0 f6 silver tc">Vägens beläggning</p>
+                            <p className="m0 f6 b tc">Vägens beläggning</p>
                             <p onClick={() => getTopMaterial(0)} className="selectionbackground f6 fl hover-bg-orange hover-white b--black bb bt bl ph3 pv2 dib br2 br--left bl orange" href="#0">Ingen</p>
                             <p onClick={() => getTopMaterial(25)}className="selectionbackground f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib orange" href="#0">Oljegrus</p>
                             <p onClick={() => getTopMaterial(50)}className="selectionbackground f6 fl hover-bg-orange hover-white b--black bb bt ph3 pv2 dib orange br2 br--right br" href="#0">Asfalt</p>
@@ -97,12 +97,12 @@ const MainForm = ({getWidth, getLength, getAge, getBasicMaterial, getTopMaterial
                           ) : (null)}
                         </div>
                         <div className="center pb3">
-                          <button onClick={setExtraProperty} className="f7 grow bg-orange hover-bg-orange hover-white b--black bb bt br bl ph3 br2 pv2 dib black pointer">Lägg till fastighet
+                          <button onClick={setExtraProperty} className="f7 grow bg-orange hover-bg-orange hover-white b--black bb bt br bl ph3 br2 pv2 dib black shadow-5 pointer">Lägg till fastighet
                           </button>
                         </div>
                         <hr />
                         <div className="center pa4">
-                          <button onClick={mainFunction} className="f5 b grow bg-orange hover-bg-orange hover-white b--black bb bt br bl ph3 br4 pv2 dib black pointer">Beräkna
+                          <button onClick={mainFunction} className="f4 b grow bg-orange hover-bg-orange hover-white b--black bb bt br bl ph3 br2 pv2 ph4 dib black shadow-5 pointer">Beräkna
                           </button>
                         </div>
                     </div>
