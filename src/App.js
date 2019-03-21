@@ -11,6 +11,15 @@ let length = 0;
 let basicMaterial = 0.6;
 let topMaterial = 0.8;
 let age = 0;
+let anvandbarhet = 0;
+let ageReal = 0;
+
+let andelstalNewAndOld = 0;
+let andelsKvot1 = 0;
+let andelsKvot2 = 0;
+let andelsKvot3 = 0;
+let andelsKvot4 = 0;
+let andelsKvot5 = 0;
 
 
 let totalValue = 0;
@@ -19,6 +28,11 @@ let andelstal2Pay = 0;
 let andelstal3Pay = 0;
 let andelstal4Pay = 0;
 let andelstal5Pay = 0;
+
+let printGrundMaterial = "";
+let printTopMaterial = "";
+let printAnvandbarhet = "";
+
 
 class App extends Component {
 
@@ -41,7 +55,8 @@ class App extends Component {
 			secondConnectCost: 0,
 			thirdConnectCost: 0,
 			fourthConnectCost: 0,
-			fifthConnectCost: 0
+			fifthConnectCost: 0,
+			printFormat: false
 		}
 	}
 
@@ -87,6 +102,7 @@ class App extends Component {
 	}
 
 	getAge = (ageValue) => {
+		ageReal = parseInt(ageValue.target.value);
 		if (parseInt(ageValue.target.value) >= 35) {
 			age = 0.6;
 		} else if (parseInt(ageValue.target.value) >= 20) {
@@ -97,28 +113,56 @@ class App extends Component {
 			age = 0.9;
 		} else {
 			age = 1;
+
 		}
 	}
 
 	getBasicMaterial = (value) => {
 		basicMaterial = value;
+		if (value === 75) {
+			printGrundMaterial = "dålig";
+		} else if (value === 250) {
+			printGrundMaterial = "bra";
+		} else if (value === 350) {
+			printGrundMaterial = "bättre"
+		}
 	}
 
 	getTopMaterial = (value) => {
 		topMaterial = value;
+		if (value === 0) {
+			printTopMaterial = "utan beläggning";
+		} else if (value === 50) {
+			printTopMaterial = "med oljegrusbeläggning";
+		} else if (value === 100) {
+			printTopMaterial = "med asfaltsbeläggning"
+		}
+	}
+
+	getAnvandbarhet = (value) => {
+		anvandbarhet = value;
+		if (value === 1) {
+			printAnvandbarhet = "god";
+		} else if (value === 0,75) {
+			printAnvandbarhet = "normal";
+		} else if (value === 0,5) {
+			printAnvandbarhet = "sämre"
+		} else if (value === 0,25) {
+			printAnvandbarhet = "undermålig"
+		}
 	}
 
 
 	mainFunction = () => {
-		const andelstalNewAndOld = this.state.baseShares + this.state.firstPropertyShare+ this.state.secondPropertyShare+ this.state.thirdPropertyShare+ this.state.fourthPropertyShare+ this.state.fifthPropertyShare;
+		andelstalNewAndOld = this.state.baseShares + this.state.firstPropertyShare+ this.state.secondPropertyShare+ this.state.thirdPropertyShare+ this.state.fourthPropertyShare+ this.state.fifthPropertyShare;
 
-		const andelsKvot1 = parseFloat(this.state.firstPropertyShare / andelstalNewAndOld);
-		const andelsKvot2 = parseFloat(this.state.secondPropertyShare / andelstalNewAndOld);
-		const andelsKvot3 = parseFloat(this.state.thirdPropertyShare / andelstalNewAndOld);
-		const andelsKvot4 = parseFloat(this.state.fourthPropertyShare / andelstalNewAndOld);
-		const andelsKvot5 = parseFloat(this.state.fifthPropertyShare / andelstalNewAndOld);
+		andelsKvot1 = parseFloat(this.state.firstPropertyShare / andelstalNewAndOld);
+		andelsKvot2 = parseFloat(this.state.secondPropertyShare / andelstalNewAndOld);
+		andelsKvot3 = parseFloat(this.state.thirdPropertyShare / andelstalNewAndOld);
+		andelsKvot4 = parseFloat(this.state.fourthPropertyShare / andelstalNewAndOld);
+		andelsKvot5 = parseFloat(this.state.fifthPropertyShare / andelstalNewAndOld);
 
-		totalValue = (basicMaterial + topMaterial) * length * width * age;
+		totalValue = (basicMaterial + topMaterial) * length * width * age * anvandbarhet;
 
 		andelstal1Pay = totalValue * andelsKvot1;
 		andelstal2Pay = totalValue * andelsKvot2;
@@ -141,12 +185,16 @@ class App extends Component {
 		);
 	}
 
-
+	setPrintFormat = (yesno) => {
+		this.setState({printFormat: !this.state.printFormat});
+		//(yesno = 1) ? this.setState({printFormat: true}) : this.setState({printFormat: false});
+	}
 
   render() {
+    if (this.state.printFormat === false) { 
     return (
-      <div className="mybackground">
-        <div className="pt6 pb6">
+	      <div className="mybackground">
+	        <div className="pt6 pb6">
 		      <div className="">
 		        <MainForm 
 		        	getLength={this.getLength} 
@@ -154,7 +202,8 @@ class App extends Component {
 		        	getAge={this.getAge} 
 		        	getBasicMaterial={this.getBasicMaterial} 
 		        	getTopMaterial={this.getTopMaterial} 
-		        	mainFunction={this.mainFunction} 
+		        	mainFunction={this.mainFunction}
+		        	getAnvandbarhet={this.getAnvandbarhet} 
 		        	secondProperty={this.state.secondProperty}
 		        	thirdProperty={this.state.thirdProperty}
 		        	fourthProperty={this.state.fourthProperty}
@@ -180,13 +229,56 @@ class App extends Component {
 	              	thirdConnectCost={this.state.thirdConnectCost}
 	              	fourthConnectCost={this.state.fourthConnectCost}
 	              	fifthConnectCost={this.state.fifthConnectCost}
+	              	setPrintFormat={this.setPrintFormat}
 	              />
 	            ) : (null)}
 	          </div>
 		      </div>
 		    </div>
 		  </div>
-    );
+    );}else {
+    	return(
+    		<div>
+    			<h3>Ersättningsbeslut</h3>
+    			<h4>Skäl:</h4>
+    			<p>Styckningslotten inträder med ett andelstal för drift och ett för utförande.<br />
+    			Andelstalet för utförande är det andelstal som reglerar ägandet av vägen och är således det andelstal som reglerar inträdesersättningen. </p>
+    			<p>Först beräknas vägens värde enligt Lantmäteriets schablonkostnader, därefter görs avskrivning för vägens ålder och fortsatta användbarhet.<br /> 
+				Vägen är en {printGrundMaterial} grusväg {printTopMaterial} och det ger ett kvadratmeterpris om {(basicMaterial + topMaterial)} kr/m2. <br />
+				Vägen är ca {width} meter bred och den aktuella sektionen är ca {length} meter lång enligt akt (<i>aktnummer</i>). <br />
+				Vägens ålder anses vara {ageReal} år eller äldre, vilket ger en avskrivning om {100-(age*100)} %. <br />
+				Den fortsatta användbarheten för vägen anses {printAnvandbarhet}, vilket ger en avskrivning om {100-(anvandbarhet*100)} %.</p>
+    			<p>Vägens värde blir:<br />
+    			{basicMaterial} (+{topMaterial}) * {width} * {length} * {age} * {anvandbarhet} = {totalValue} kr</p>
+    			<h4>Beslut:</h4>
+    			<p>Fastigheten Blivande (<i>Fastighet#1</i>) skall betala {this.state.firstPropertyShare}/{andelstalNewAndOld}-del av det beräknade överskottet i (<i>gemensamhetsanläggningens namn</i>),<br /> bestående av anläggningens värde plus föreningens kassabehållning och fonderade medel minus föreningens skulder. </p>
+    			{(this.state.secondProperty === true) ? (
+	              <p>Fastigheten Blivande (<i>Fastighet#2</i>) skall betala {this.state.secondPropertyShare}/{andelstalNewAndOld}-del av det beräknade överskottet i (<i>gemensamhetsanläggningens namn</i>),<br /> bestående av anläggningens värde plus föreningens kassabehållning och fonderade medel minus föreningens skulder.</p>
+	            ) : (null)}
+	            {(this.state.thirdProperty === true) ? (
+	              <p>Fastigheten Blivande (<i>Fastighet#3</i>) skall betala {this.state.thirdPropertyShare}/{andelstalNewAndOld}-del av det beräknade överskottet i (<i>gemensamhetsanläggningens namn</i>),<br /> bestående av anläggningens värde plus föreningens kassabehållning och fonderade medel minus föreningens skulder.</p>
+	            ) : (null)}
+	            {(this.state.fourthProperty === true) ? (
+	              <p>Fastigheten Blivande (<i>Fastighet#4</i>) skall betala {this.state.fourthPropertyShare}/{andelstalNewAndOld}-del av det beräknade överskottet i (<i>gemensamhetsanläggningens namn</i>),<br /> bestående av anläggningens värde plus föreningens kassabehållning och fonderade medel minus föreningens skulder.</p>
+	            ) : (null)}
+	            {(this.state.fifthProperty === true) ? (
+	              <p>Fastigheten Blivande (<i>Fastighet#5</i>) skall betala {this.state.fifthPropertyShare}/{andelstalNewAndOld}-del av det beräknade överskottet i (<i>gemensamhetsanläggningens namn</i>),<br /> bestående av anläggningens värde plus föreningens kassabehållning och fonderade medel minus föreningens skulder.</p>
+	            ) : (null)}
+    			<p>Kassabehållning, fonderade medel och skulder ska beräknas den dag beslutet registreras i fastighetsregistret.<br /> 
+    			Anläggningens värde i den aktuella sektionen uppskattas till {totalValue} kr.</p>
+    			<p>Ersättning ska betalas senast 3 månader efter det att ersättningsbeslutet har vunnit laga kraft.</p>
+    			<p>Om betalning sker därefter betalas ränta enligt 6§ räntelagen från sista betalningsdag tills betalning sker.</p>
+    			<br /> 
+    			<br /> 
+    			<br /> 
+    			<br /> 
+    			<div>
+    				<p onClick={() => this.setPrintFormat(0)} className="silver pb2 pointer">Tryck här för att gå tillbaka</p>
+    			</div>
+    		</div>
+
+    	);
+    }
   }
 }
 

@@ -2,7 +2,7 @@ import React from "react";
 import "./MyForm.css";
 
 
-const MainForm = ({getWidth, getLength, getAge, getBasicMaterial, getTopMaterial, mainFunction, secondProperty, thirdProperty, fourthProperty, fifthProperty, setExtraProperty, setBaseShares, setProperty1Share, setProperty2Share, setProperty3Share, setProperty4Share, setProperty5Share}) => {
+const MainForm = ({getWidth, getLength, getAge, getBasicMaterial, getTopMaterial, mainFunction, getAnvandbarhet, secondProperty, thirdProperty, fourthProperty, fifthProperty, setExtraProperty, setBaseShares, setProperty1Share, setProperty2Share, setProperty3Share, setProperty4Share, setProperty5Share}) => {
     return (
         <div className="">
             <div className="">
@@ -12,19 +12,26 @@ const MainForm = ({getWidth, getLength, getAge, getBasicMaterial, getTopMaterial
                         <div className="flex items-center justify-center flex-column">
                           <div className='cf dib'>
                             <p className="m0 f6 b tc">Vägens grundmaterial</p>
-                            <p onClick={() => getBasicMaterial(100)} className="selectionbackground change-button-color f6 fl hover-bg-orange hover-white b--black bb bt bl ph3 pv2 dib br2 br--left bl orange" href="#0">Grus (dålig)</p>
-                            <p onClick={() => getBasicMaterial(150)} className="selectionbackground change-button-color f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib orange" href="#0">Grus (bra)</p>
-                            <p onClick={() => getBasicMaterial(250)} className="selectionbackground change-button-color f6 fl hover-bg-orange hover-white b--black bb bt ph3 pv2 dib orange br2 br--right br" href="#0">Grus (bättre)</p>
+                            <button onClick={() => getBasicMaterial(75)} className="selectionbackground change-button-color f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib br2 br--left bl orange">Grus (dålig)</button>
+                            <button onClick={() => getBasicMaterial(250)} className= {`selectionbackground change-button-color f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib orange`}>Grus (bra)</button>
+                            <button onClick={() => getBasicMaterial(350)} className="selectionbackground change-button-color f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib orange br2 br--right br">Grus (bättre)</button>
                           </div>
                         </div>
                         <div className="flex items-center justify-center flex-column">
                           <div className='cf dib'>
                             <p className="m0 f6 b tc">Vägens beläggning</p>
-                            <p onClick={() => getTopMaterial(0)} className="selectionbackground f6 fl hover-bg-orange hover-white b--black bb bt bl ph3 pv2 dib br2 br--left bl orange" href="#0">Ingen</p>
-                            <p onClick={() => getTopMaterial(25)}className="selectionbackground f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib orange" href="#0">Oljegrus</p>
-                            <p onClick={() => getTopMaterial(50)}className="selectionbackground f6 fl hover-bg-orange hover-white b--black bb bt ph3 pv2 dib orange br2 br--right br" href="#0">Asfalt</p>
+                            <button onClick={() => getTopMaterial(0)} className="selectionbackground f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib br2 br--left bl orange">Ingen</button>
+                            <button onClick={() => getTopMaterial(50)}className="selectionbackground f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib orange">Oljegrus</button>
+                            <button onClick={() => getTopMaterial(100)}className="selectionbackground f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib orange br2 br--right br">Asfalt</button>
                           </div>
                         </div>
+                        <div className='cf dib'>
+                            <p className="m0 f6 b tc">Vägens fortsätta andvändbarhet</p>
+                            <button onClick={() => getAnvandbarhet(1)} className="selectionbackground change-button-color f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib br2 br--left bl orange">God</button>
+                            <button onClick={() => getAnvandbarhet(0.75)} className= {`selectionbackground change-button-color f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib orange`}>Normal</button>
+                            <button onClick={() => getAnvandbarhet(0.5)} className= {`selectionbackground change-button-color f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib orange`}>Sämre</button>
+                            <button onClick={() => getAnvandbarhet(0.25)} className="selectionbackground change-button-color f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib orange br2 br--right br">Undermålig</button>
+                          </div>
                         <form className="pt3 pl5 pr5 black-80">
                           <div className="measure ">
                             <label htmlFor="length" className="f6 b db mb2">Vägens ålder</label>
