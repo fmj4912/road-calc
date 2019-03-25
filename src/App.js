@@ -103,13 +103,13 @@ class App extends Component {
 
 	getAge = (ageValue) => {
 		ageReal = parseInt(ageValue.target.value);
-		if (parseInt(ageValue.target.value) >= 35) {
+		if (parseInt(ageReal) > 35) {
 			age = 0.6;
-		} else if (parseInt(ageValue.target.value) >= 20) {
+		} else if (parseInt(ageReal) >= 25) {
 			age = 0.7;
-		} else if (parseInt(ageValue.target.value) >= 10) {
+		} else if (parseInt(ageReal) >= 15) {
 			age = 0.8;
-		} else if (parseInt(ageValue.target.value) >= 5) {
+		} else if (parseInt(ageReal) >= 5) {
 			age = 0.9;
 		} else {
 			age = 1;
@@ -179,7 +179,6 @@ class App extends Component {
 
 		this.setState({renderResult: true});
 
-
 		return (
 			(1)
 		);
@@ -187,7 +186,6 @@ class App extends Component {
 
 	setPrintFormat = (yesno) => {
 		this.setState({printFormat: !this.state.printFormat});
-		//(yesno = 1) ? this.setState({printFormat: true}) : this.setState({printFormat: false});
 	}
 
   render() {

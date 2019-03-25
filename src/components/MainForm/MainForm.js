@@ -6,23 +6,23 @@ const MainForm = ({getWidth, getLength, getAge, getBasicMaterial, getTopMaterial
     return (
         <div className="">
             <div className="">
-                <article className="tc br3 ba dark-gray b--black-10 mv4 w-100 w-50-m w-25-l mw9 center formbackground">
+                <article className="tc br3 ba dark-gray b--black-10 mv4 w-auto w-50-m w-30-l mw-9 center formbackground">
                     <div className="">
                         <p className="f3 underline">Anslutningsberäkning</p>
                         <div className="flex items-center justify-center flex-column">
                           <div className='cf dib'>
                             <p className="m0 f6 b tc">Vägens grundmaterial</p>
-                            <button onClick={() => getBasicMaterial(75)} className="selectionbackground change-button-color f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib br2 br--left bl orange">Grus (dålig)</button>
-                            <button onClick={() => getBasicMaterial(250)} className= {`selectionbackground change-button-color f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib orange`}>Grus (bra)</button>
-                            <button onClick={() => getBasicMaterial(350)} className="selectionbackground change-button-color f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib orange br2 br--right br">Grus (bättre)</button>
+                            <button onClick={() => getBasicMaterial(75)} className="selectionbackground change-button-color f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib br2 br--left bl orange">Grus (<i>dålig standard</i>)</button>
+                            <button onClick={() => getBasicMaterial(200)} className= {`selectionbackground change-button-color f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib orange`}>Grus (<i>bra standard</i>)</button>
+                            <button onClick={() => getBasicMaterial(350)} className="selectionbackground change-button-color f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib orange br2 br--right br">Grus (<i>bättre standard</i>)</button>
                           </div>
                         </div>
                         <div className="flex items-center justify-center flex-column">
                           <div className='cf dib'>
                             <p className="m0 f6 b tc">Vägens beläggning</p>
                             <button onClick={() => getTopMaterial(0)} className="selectionbackground f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib br2 br--left bl orange">Ingen</button>
-                            <button onClick={() => getTopMaterial(50)}className="selectionbackground f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib orange">Oljegrus</button>
-                            <button onClick={() => getTopMaterial(100)}className="selectionbackground f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib orange br2 br--right br">Asfalt</button>
+                            <button onClick={() => getTopMaterial(50)}className="selectionbackground f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib orange">Tankbeläggning (<i>t.ex. oljegrus</i>)</button>
+                            <button onClick={() => getTopMaterial(100)}className="selectionbackground f6 fl hover-bg-orange hover-white b--black ba ph3 pv2 dib orange br2 br--right br">Massabeläggning (<i> t.ex. asfalt</i></button>
                           </div>
                         </div>
                         <div className='cf dib'>
